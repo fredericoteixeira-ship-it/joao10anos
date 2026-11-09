@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101b25" />
+  <meta name="description" content="Confirme sua presença na festa de 10 anos do João!" />
+  <title>João 10 anos | Confirme sua presença</title>
+  <style>
+    :root {
+      --ink: #101b25;
+      --ink-soft: #1b2a35;
+      --paper: #f7f8ef;
+      --lime: #b8f52b;
+      --green: #62c92d;
+      --orange: #ff762e;
+      --cyan: #59dce4;
+      --muted: #65717a;
+      --line: rgba(16, 27, 37, .13);
+      --shadow: 0 22px 65px rgba(10, 24, 35, .18);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-rounded, "Trebuchet MS", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(184,245,43,.22), transparent 23rem),
+        radial-gradient(circle at 92% 30%, rgba(89,220,228,.18), transparent 26rem),
+        #eaf0e5;
+      overflow-x: hidden;
+    }
+    .page-shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 42px; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 4px 16px; }
+    .brand { display: flex; align-items: center; gap: 9px; color: #33434b; font-size: .78rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; color: var(--ink); background: var(--lime); transform: rotate(-7deg); font-size: 1rem; }
+    .top-tag { padding: 8px 12px; border: 1px solid rgba(16,27,37,.13); border-radius: 999px; color: #52616a; background: rgba(255,255,255,.55); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 390px;
+      border-radius: 30px;
+      padding: clamp(28px, 6vw, 66px);
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 28%, rgba(184,245,43,.18), transparent 18rem),
+        linear-gradient(125deg, #101b25 0%, #172d38 56%, #183b3c 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 440px; height: 440px;
+      right: -95px; top: -130px;
+      border: 2px solid rgba(184,245,43,.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px rgba(184,245,43,.035), 0 0 0 58px rgba(184,245,43,.025);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 180px; height: 180px;
+      right: 12%; bottom: -115px;
+      border: 25px solid rgba(89,220,228,.12);
+      border-radius: 50%;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 630px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; color: var(--lime); font-size: .76rem; font-weight: 1000; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 3px; border-radius: 9px; background: var(--lime); }
+    h1 { margin: 0; max-width: 650px; font-size: clamp(3.3rem, 9vw, 6.7rem); line-height: .88; letter-spacing: -.075em; font-weight: 1000; }
+    h1 .ten { color: var(--lime); text-shadow: 0 5px 0 rgba(0,0,0,.16); }
+    .hero-copy { max-width: 470px; margin: 23px 0 0; color: rgba(255,255,255,.79); font-size: clamp(1rem, 2vw, 1.12rem); line-height: 1.6; }
+    .hero-copy strong { color: #fff; }
+    .hero-icons { position: absolute; right: clamp(20px, 6vw, 70px); bottom: 42px; display: flex; align-items: end; gap: 12px; transform: rotate(-5deg); }
+    .hero-icon { display: grid; place-items: center; width: 76px; height: 76px; border: 1px solid rgba(255,255,255,.15); border-radius: 22px; background: rgba(255,255,255,.09); backdrop-filter: blur(8px); font-size: 2.6rem; box-shadow: 0 12px 24px rgba(0,0,0,.18); }
+    .hero-icon:nth-child(2) { width: 94px; height: 94px; border-color: rgba(184,245,43,.65); background: rgba(184,245,43,.14); transform: translateY(-19px) rotate(9deg); }
+    .hero-icon:nth-child(3) { transform: rotate(8deg); }
+    .track { height: 12px; margin: 0 30px; border-radius: 0 0 12px 12px; background: repeating-linear-gradient(90deg, #fff 0 22px, #26343b 22px 44px); opacity: .8; }
+    .intro { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin: 30px 4px 18px; }
+    .intro h2 { margin: 0; font-size: clamp(1.45rem, 3vw, 2rem); letter-spacing: -.045em; }
+    .intro p { margin: 7px 0 0; color: var(--muted); line-height: 1.5; }
+    .mission-chip { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(16,27,37,.12); border-radius: 12px; background: rgba(255,255,255,.6); color: #42515a; font-size: .76rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .content-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(270px, .85fr); gap: 18px; align-items: stretch; }
+    .form-card, .side-card { border: 1px solid rgba(255,255,255,.8); border-radius: 24px; background: rgba(255,255,255,.88); box-shadow: 0 14px 38px rgba(22,40,48,.08); }
+    .form-card { padding: clamp(23px, 4vw, 36px); }
+    .card-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
+    .heading-icon { display: grid; place-items: center; flex: 0 0 auto; width: 46px; height: 46px; border-radius: 14px; background: #e9f8c9; font-size: 1.35rem; }
+    .card-heading h3 { margin: 0; font-size: 1.24rem; letter-spacing: -.035em; }
+    .card-heading p { margin: 3px 0 0; color: var(--muted); font-size: .88rem; }
+    .field { margin-bottom: 19px; }
+    label { display: block; margin-bottom: 8px; color: #33434b; font-size: .85rem; font-weight: 900; }
+    .label-note { color: #849097; font-weight: 600; }
+    input, select {
+      width: 100%; min-height: 54px; padding: 0 16px;
+      border: 1.5px solid #dce3de; border-radius: 13px;
+      outline: none; color: var(--ink); background: #fbfcf8;
+      font: inherit; font-size: 1rem; transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input::placeholder { color: #a2acaa; }
+    input:focus, select:focus { border-color: #8acb2e; background: #fff; box-shadow: 0 0 0 4px rgba(184,245,43,.2); }
+    .field-hint { margin: 7px 0 0; color: #87918e; font-size: .77rem; }
+    .submit-btn {
+      display: flex; align-items: center; justify-content: center; gap: 11px;
+      width: 100%; min-height: 59px; margin-top: 25px; padding: 13px 20px;
+      border: 0; border-radius: 15px; color: #14210d;
+      background: linear-gradient(135deg, #c9ff48, #9be72d);
+      box-shadow: 0 9px 0 #6cab1f, 0 15px 24px rgba(90,155,29,.18);
+      font: inherit; font-size: 1rem; font-weight: 1000; cursor: pointer;
+      transition: transform .15s, box-shadow .15s, filter .15s;
+    }
+    .submit-btn:hover { filter: saturate(1.12); transform: translateY(-2px); box-shadow: 0 11px 0 #6cab1f, 0 18px 27px rgba(90,155,29,.22); }
+    .submit-btn:active { transform: translateY(5px); box-shadow: 0 4px 0 #6cab1f; }
+    .whatsapp-mark { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; color: #fff; background: #168e49; font-size: .95rem; }
+    .privacy-note { display: flex; justify-content: center; gap: 7px; margin: 17px 0 0; color: #87918e; text-align: center; font-size: .76rem; line-height: 1.45; }
+    .side-card { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; min-height: 100%; padding: 27px; color: #fff; background: linear-gradient(155deg, #23513c, #142b32 75%); }
+    .side-card::before { content: ""; position: absolute; width: 270px; height: 270px; right: -125px; top: -100px; border: 1px solid rgba(184,245,43,.3); border-radius: 50%; box-shadow: 0 0 0 20px rgba(184,245,43,.045), 0 0 0 42px rgba(184,245,43,.035); }
+    .side-content { position: relative; z-index: 1; }
+    .side-kicker { color: var(--lime); font-size: .73rem; font-weight: 1000; letter-spacing: .14em; text-transform: uppercase; }
+    .side-card h3 { max-width: 260px; margin: 12px 0; font-size: 1.8rem; line-height: 1.04; letter-spacing: -.055em; }
+    .side-card p { max-width: 290px; color: rgba(255,255,255,.72); font-size: .91rem; line-height: 1.55; }
+    .quest-list { display: grid; gap: 12px; margin: 25px 0 28px; padding: 0; list-style: none; }
+    .quest-list li { display: flex; align-items: center; gap: 11px; color: rgba(255,255,255,.9); font-size: .88rem; font-weight: 700; }
+    .quest-number { display: grid; place-items: center; width: 27px; height: 27px; flex: 0 0 auto; border-radius: 9px; color: var(--ink); background: var(--lime); font-size: .78rem; font-weight: 1000; }
+    .side-art { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; min-height: 95px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.15); }
+    .side-art span { filter: drop-shadow(0 7px 7px rgba(0,0,0,.2)); font-size: clamp(2.4rem, 5vw, 3.7rem); }
+    .side-art .watch { display: grid; place-items: center; width: 66px; height: 66px; border: 5px solid #a5e62a; border-radius: 19px; color: #b8f52b; background: #1a292c; font-size: 2rem; box-shadow: 0 0 0 5px rgba(184,245,43,.12); }
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 23px 5px 0; color: #77847f; font-size: .77rem; }
+    .footer strong { color: #4d5b56; }
+    .footer .flag { color: #7ba82c; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .toast { position: fixed; left: 50%; bottom: 22px; z-index: 10; width: min(420px, calc(100% - 32px)); padding: 14px 17px; border-radius: 13px; color: white; background: #a94025; box-shadow: 0 12px 35px rgba(0,0,0,.2); font-size: .9rem; font-weight: 700; text-align: center; transform: translate(-50%, 130px); opacity: 0; transition: .25s ease; }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    @media (max-width: 760px) {
+      .page-shell { width: min(100% - 22px, 560px); padding-top: 13px; }
+      .hero { min-height: 440px; padding: 35px 25px 145px; border-radius: 23px; }
+      .hero-icons { right: 24px; bottom: 22px; gap: 8px; }
+      .hero-icon { width: 59px; height: 59px; border-radius: 17px; font-size: 2rem; }
+      .hero-icon:nth-child(2) { width: 72px; height: 72px; }
+      .track { margin: 0 20px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 25px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .side-card { min-height: 370px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <div class="topline">
+      <div class="brand"><span class="brand-mark">★</span> Convite especial</div>
+      <div class="top-tag">Edição de aniversário · 10 anos</div>
+    </div>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div class="hero-content">
+        <div class="eyebrow">Atenção, equipe!</div>
+        <h1 id="main-title">JOÃO<br><span class="ten">10 ANOS!</span></h1>
+        <p class="hero-copy">Prepare-se para uma aventura <strong>em alta velocidade</strong>, com dinossauros gigantes e poderes alienígenas. Você está convocado para essa missão!</p>
+      </div>
+      <div class="hero-icons" aria-hidden="true">
+        <span class="hero-icon">🏎️</span>
+        <span class="hero-icon">⌚</span>
+        <span class="hero-icon">🦖</span>
+      </div>
+    </section>
+    <div class="track" aria-hidden="true"></div>
+
+    <section class="intro">
+      <div>
+        <h2>Você vai entrar nessa aventura?</h2>
+        <p>Confirme sua presença preenchendo os dados abaixo.</p>
+      </div>
+      <div class="mission-chip"><span>🟢</span> Central de confirmações</div>
+    </section>
+
+    <section class="content-grid" aria-label="Confirmação de presença">
+      <form class="form-card" id="rsvp-form" novalidate>
+        <div class="card-heading">
+          <div class="heading-icon">📋</div>
+          <div>
+            <h3>Confirme sua missão</h3>
+            <p>Leva só alguns segundos!</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="guest-name">Nome do convidado</label>
+          <input id="guest-name" name="guestName" type="text" placeholder="Digite seu nome completo" maxlength="80" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="invite-code">Código do convite</label>
+          <input id="invite-code" name="inviteCode" type="text" placeholder="Digite o código que recebeu" maxlength="30" autocomplete="off" required />
+          <p class="field-hint">Confira o código no seu convite antes de enviar.</p>
+        </div>
+
+        <div class="field">
+          <label for="guests">Quantidade de participantes</label>
+          <select id="guests" name="guests" required>
+            <option value="" selected disabled>Selecione a quantidade</option>
+            <option value="1">1 participante</option>
+            <option value="2">2 participantes</option>
+            <option value="3">3 participantes</option>
+            <option value="4">4 participantes</option>
+            <option value="5">5 participantes</option>
+            <option value="6">6 participantes</option>
+            <option value="7">7 participantes</option>
+            <option value="8">8 participantes</option>
+            <option value="9">9 participantes</option>
+            <option value="10">10 participantes</option>
+          </select>
+          <p class="field-hint">Conte o convidado principal e os acompanhantes.</p>
+        </div>
+
+        <button class="submit-btn" type="submit">
+          <span class="whatsapp-mark" aria-hidden="true">➤</span>
+          Confirmar pelo WhatsApp
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="privacy-note"><span>🔒</span> Seus dados serão usados somente para confirmar a presença.</p>
+      </form>
+
+      <aside class="side-card">
+        <div class="side-content">
+          <div class="side-kicker">Protocolo de entrada #010</div>
+          <h3>Uma festa de outro planeta!</h3>
+          <p>Ative seu modo aventura e venha comemorar os 10 anos do João. Sua presença faz parte dessa missão!</p>
+          <ul class="quest-list">
+            <li><span class="quest-number">01</span> Escolha sua equipe</li>
+            <li><span class="quest-number">02</span> Informe o código secreto</li>
+            <li><span class="quest-number">03</span> Confirme pelo WhatsApp</li>
+          </ul>
+        </div>
+        <div class="side-art" aria-hidden="true">
+          <span>🏁</span><span>🦕</span><span class="watch">✦</span><span>🚙</span>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <span>Feito para uma comemoração <strong>gigante!</strong></span>
+      <span class="flag">João · 10 anos · 2026</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const form = document.getElementById('rsvp-form');
+      const nameInput = document.getElementById('guest-name');
+      const codeInput = document.getElementById('invite-code');
+      const guestsInput = document.getElementById('guests');
+      const toast = document.getElementById('toast');
+      const whatsappNumber = '5538998617565';
+      let toastTimer;
+
+      function showError(message, field) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+        if (field) field.focus();
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const guestName = nameInput.value.trim().replace(/\s+/g, ' ');
+        const inviteCode = codeInput.value.trim();
+        const guests = guestsInput.value;
+
+        if (!guestName) return showError('Digite o nome do convidado para continuar.', nameInput);
+        if (!inviteCode) return showError('Digite o código do convite para continuar.', codeInput);
+        if (!guests) return showError('Selecione a quantidade de participantes.', guestsInput);
+
+        const participantLabel = Number(guests) === 1 ? '1 participante' : `${guests} participantes`;
+        const message = [
+          '🎉 *CONFIRMAÇÃO DE PRESENÇA — ANIVERSÁRIO DO JOÃO*',
+          '',
+          `👤 *Convidado:* ${guestName}`,
+          `🎟️ *Código do convite:* ${inviteCode}`,
+          `👥 *Quantidade de participantes:* ${participantLabel}`,
+          '',
+          '✅ Presença confirmada!'
+        ].join('\n');
+
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const newWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        if (!newWindow) window.location.href = whatsappUrl;
+      });
+    })();
+  </script>
+</body>
+</html>
